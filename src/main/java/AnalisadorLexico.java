@@ -5,12 +5,13 @@ import java.io.IOException;
 
 public class AnalisadorLexico extends Analisador {
 
-    protected char proxCaractere; // caractere dispon�vel no cabeçote de leitura
+    protected char proxCaractere; // caractere disponível no cabeçote de leitura
     protected int linha = 1; // linha atual do arquivo fonte
-    protected StringBuffer entrada = new StringBuffer(); // armazena o conte�do do arquivo
-    protected int posicao = 0; // posição do caractere a ser lido na entrada
+    protected StringBuffer entrada = new StringBuffer(); // armazena o conteúdo do arquivo
+    protected int posicaoLeitura = 0; // posição do caractere a ser lido na entrada
+    protected int posicaoErro = 0; // posição do caractere a ser lido na entrada com erro
     protected Token tokenReconhecido; // último token lido
-    // transfere o arquivo para o buffer �entrada�
+    // transfere o arquivo para o buffer 'entrada'
 
     public AnalisadorLexico(String nomeArquivoEntrada) {
         super(nomeArquivoEntrada);
@@ -31,7 +32,12 @@ public class AnalisadorLexico extends Analisador {
     // avança o ponteiro de leitura 1 posição
     public void leProxCaractere() {
         try {
-            this.proxCaractere = this.entrada.charAt(this.posicao++);
+            this.proxCaractere = this.entrada.charAt(this.posicaoLeitura++);
+            posicaoErro++;
+            if (this.proxCaractere == '\n'){
+                linha++;
+                posicaoErro = 0;
+            }
         } catch (IndexOutOfBoundsException e) {
             this.proxCaractere = EOF;
         }

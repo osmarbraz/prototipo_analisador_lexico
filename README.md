@@ -1,4 +1,4 @@
-# Protótipo de um Analisador léxico
+# Protótipo de um Analisador Léxico
 
 ## **Resumo**
 Este programa realiza a análise léxica dos programas escritos na linguagem oob. 
@@ -18,6 +18,9 @@ Os arquivos lotes(.bat) tem a seguinte função:
 - `limpa.bat` - Apaga os diretórios jar e bin do compilar da linguagem oob.
 - `executa.bat`- Realiza a execução do compilador da linguagem oob. Necesário especifica o nome do arquivo a ser analisado.
 - `documenta.bat`- Realiza a documentação do código fonte.
+
+## ** Exemplo compilação da linguagem oob**
+- Abra o terminal e execute no diretório do projeto 'compila.bat programa.oob'.
 
 ## **Requisitos** 
 - JDK 1.8 

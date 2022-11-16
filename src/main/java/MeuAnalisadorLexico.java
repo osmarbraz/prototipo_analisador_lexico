@@ -24,6 +24,7 @@ public class MeuAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             s0();
         } else {
+            System.out.println("Erro na linha: " + linha + " coluna " + posicaoErro);
             throw new ErroLexico(this.proxCaractere, DIGITOS + LETRAS_MINUSCULAS + VAZIOS + PONTOVIRGULA + HIFEN);
         }
     }
