@@ -20,7 +20,7 @@ Os arquivos lotes(.bat) tem a seguinte função:
 - `documenta.bat`- Realiza a documentação do código fonte.
 
 ## ** Exemplo compilação da linguagem oob**
-- Abra o terminal e execute no diretório do projeto 'compila.bat programa.oob'.
+- Abra o terminal e execute no diretório do projeto `compila.bat programa.oob`.
 
 ## **Requisitos** 
 - JDK 1.8 
