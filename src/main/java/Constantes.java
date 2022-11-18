@@ -7,7 +7,7 @@ public interface Constantes {
 
     String DIGITOS = "0123456789",
             LETRAS_MINUSCULAS = "abcdefghijklmnopqrstuvwxyz",
-            LETRAS_MAISCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            LETRAS_MAIUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
             ATRIB = ":=",
             VAZIOS = " \r\n\t";
     

@@ -9,7 +9,7 @@ public class Principal {
                 throw new RuntimeException("Esqueceu de escrever o nome do arquivo de entrada!");
             }
             leitor = new MeuAnalisadorLexico(args[0]);
-            // chama várias vezes até encontrar o fim de arquivo
+            // Chama várias vezes até encontrar o fim de arquivo
             do {
                 leitor.s0();
                 System.out.println(leitor.tokenReconhecido);

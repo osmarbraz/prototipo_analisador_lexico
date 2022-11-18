@@ -1,3 +1,3 @@
 x := 5;
-valor := valor-total ; 
+valor := valor.total;
 soma := total ;

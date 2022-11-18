@@ -9,7 +9,7 @@ public class AnalisadorLexico extends Analisador {
     protected int linha = 1; // linha atual do arquivo fonte
     protected StringBuffer entrada = new StringBuffer(); // armazena o conteúdo do arquivo
     protected int posicaoLeitura = 0; // posição do caractere a ser lido na entrada
-    protected int posicaoErro = 0; // posição do caractere a ser lido na entrada com erro
+    protected int colunaErro = 0; // posição do caractere a ser lido na entrada com erro
     protected Token tokenReconhecido; // último token lido
     // transfere o arquivo para o buffer 'entrada'
 
@@ -28,24 +28,25 @@ public class AnalisadorLexico extends Analisador {
         }
     }
 
-    // lê o próximo caractere do buffer. Se fim, retorna EOF
-    // avança o ponteiro de leitura 1 posição
+    // Lê o próximo caractere do buffer. Se fim, retorna EOF
+    // Avança o ponteiro de leitura 1 posição
     public void leProxCaractere() {
         try {
             this.proxCaractere = this.entrada.charAt(this.posicaoLeitura++);
-            posicaoErro++;
+            colunaErro++;
             if (this.proxCaractere == '\n'){
                 linha++;
-                posicaoErro = 0;
+                colunaErro = 0;
             }
         } catch (IndexOutOfBoundsException e) {
             this.proxCaractere = EOF;
         }
     }
 
-    // verifica se o próximo caractere é um dos que estão em 's'
-    // NãO avançaa o ponteiro de leitura
+    // Verifica se o próximo caractere é um dos que estão em 's'
+    // NãO avança o ponteiro de leitura
     public boolean proxCaractereIs(String s) {
+        //System.out.println("this.proxCaractere:" + this.proxCaractere);
         if (s.indexOf(this.proxCaractere) != -1) {
             return true;
         } else {

@@ -11,7 +11,7 @@ public class MeuAnalisadorLexico extends AnalisadorLexico {
         } else if (this.proxCaractere == DOISPONTOS) {
             leProxCaractere();
             s2();
-        } else if (this.proxCaractereIs(LETRAS_MINUSCULAS)) {
+        } else if (this.proxCaractereIs(LETRAS_MINUSCULAS+LETRAS_MAIUSCULAS)) {
             leProxCaractere();
             s4();
         } else if (this.proxCaractere == PONTOVIRGULA) {
@@ -23,14 +23,13 @@ public class MeuAnalisadorLexico extends AnalisadorLexico {
         } else if (this.proxCaractereIs(VAZIOS)) {
             leProxCaractere();
             s0();
-        } else {
-            System.out.println("Erro na linha: " + linha + " coluna " + posicaoErro);
-            throw new ErroLexico(this.proxCaractere, DIGITOS + LETRAS_MINUSCULAS + VAZIOS + PONTOVIRGULA + HIFEN);
+        } else {            
+            throw new ErroLexico(this.proxCaractere, DIGITOS + LETRAS_MINUSCULAS + LETRAS_MAIUSCULAS + VAZIOS + PONTOVIRGULA + HIFEN, linha, colunaErro);
         }
     }
-
+    
     public void s1() {
-        this.tokenReconhecido = Token.NUMERO;
+        this.tokenReconhecido = Token.NUMERO;        
         if (this.proxCaractereIs(DIGITOS)) {
             leProxCaractere();
             s1();
@@ -42,7 +41,7 @@ public class MeuAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             s3();
         } else {
-            throw new ErroLexico(this.proxCaractere, LETRAS_MINUSCULAS + IGUAL);
+            throw new ErroLexico(this.proxCaractere, LETRAS_MINUSCULAS + IGUAL, linha, colunaErro);
         }
     }
 
@@ -52,7 +51,7 @@ public class MeuAnalisadorLexico extends AnalisadorLexico {
 
     public void s4() {
         this.tokenReconhecido = Token.IDENTIFICADOR;
-        if (this.proxCaractereIs(LETRAS_MINUSCULAS + DIGITOS + HIFEN)) {
+        if (this.proxCaractereIs(LETRAS_MINUSCULAS + LETRAS_MAIUSCULAS + DIGITOS + HIFEN)) {
             leProxCaractere();
             s4();
         }
